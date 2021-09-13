@@ -19,13 +19,4 @@ public class Car {
     private String color;
 
 
-    public Car() {
-    }
-
-    public Car(String brand, String model, String color) {
-        this.brand = brand;
-        this.model = model;
-        this.color = color;
-    }
-
 }

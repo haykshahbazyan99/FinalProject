@@ -1,5 +1,6 @@
 package com.shahbazyan.finalProject.controller;
 
+import com.shahbazyan.finalProject.dto.CarDto;
 import com.shahbazyan.finalProject.model.Car;
 import com.shahbazyan.finalProject.service.CarService;
 import lombok.RequiredArgsConstructor;
@@ -12,37 +13,48 @@ public class CarController {
 //    @Autowired
     private final CarService carService;
 
+//    public CarController(CarService carService) {
+//        this.carService = carService;
+//    }
 
-    @PostMapping("/addCar")
-    public void addCar(@RequestBody Car car) {
+    @PostMapping("/createCar")
+    public void createCar(@RequestBody CarDto carDto) {
+
+        Car car = new Car();
+
+        car.setBrand(carDto.getBrand());
+        car.setModel(carDto.getModel());
+        car.setColor(carDto.getColor());
+
         carService.saveCar(car);
     }
 
 
     @GetMapping("/getCar/{id}")
-    public Car getCar(@PathVariable("id") int id) {
-        return carService.getCar(id);
+    public CarDto getCar(@PathVariable("id") int id) {
+
+        Car car = carService.getCar(id);
+        return new CarDto(car);
     }
 
 
     @DeleteMapping("/removeCar/{id}")
     public void removeCar(@PathVariable("id") int id) {
         carService.deleteCar(id);
-
     }
 
 
-    @PutMapping("/update/{id}")
-    public void update(@RequestBody Car car,
+    @PutMapping("/updateCar/{id}")
+    public void updateCar(@RequestBody CarDto carDto,
                        @PathVariable("id") int id) {
 
-        Car car1 = carService.getCar(id);
+        Car car = carService.getCar(id);
 
-        car1.setModel(car.getModel());
-        car1.setBrand(car.getBrand());
-        car1.setColor(car.getColor());
+        car.setModel(carDto.getModel());
+        car.setBrand(carDto.getBrand());
+        car.setColor(carDto.getColor());
 
-        carService.updateCar(car1);
+        carService.updateCar(car);
 
     }
 
