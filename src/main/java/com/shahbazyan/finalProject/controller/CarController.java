@@ -1,7 +1,7 @@
-package com.shahbazyan.FinalProject.controller;
+package com.shahbazyan.finalProject.controller;
 
-import com.shahbazyan.FinalProject.model.Car;
-import com.shahbazyan.FinalProject.service.CarService;
+import com.shahbazyan.finalProject.model.Car;
+import com.shahbazyan.finalProject.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,9 +26,8 @@ public class CarController {
 
     @DeleteMapping("/removeCar/{id}")
     public void removeCar(@PathVariable("id") int id) {
+        carService.deleteCar(id);
 
-        Car car = carService.getCar(id);
-        carService.deleteCar(car);
     }
 
 
@@ -43,6 +42,7 @@ public class CarController {
         car1.setColor(car.getColor());
 
         carService.updateCar(car1);
+
     }
 
 }

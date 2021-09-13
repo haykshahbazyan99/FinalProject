@@ -1,4 +1,4 @@
-package com.shahbazyan.FinalProject;
+package com.shahbazyan.finalProject;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
