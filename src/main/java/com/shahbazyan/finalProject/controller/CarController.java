@@ -2,14 +2,15 @@ package com.shahbazyan.finalProject.controller;
 
 import com.shahbazyan.finalProject.model.Car;
 import com.shahbazyan.finalProject.service.CarService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequiredArgsConstructor
 public class CarController {
 
-    @Autowired
-    private CarService carService;
+//    @Autowired
+    private final CarService carService;
 
 
     @PostMapping("/addCar")
